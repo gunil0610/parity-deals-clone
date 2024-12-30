@@ -1,3 +1,4 @@
+import { Footer } from "./_components/Footer";
 import { NavBar } from "./_components/NavBar";
 
 export default function MarketingLayout({
@@ -9,6 +10,7 @@ export default function MarketingLayout({
     <div className="selection:bg-[hsl(320,65%,52%,20%)]">
       <NavBar />
       {children}
+      <Footer />
     </div>
   );
 }
