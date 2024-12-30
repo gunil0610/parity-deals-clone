@@ -1,101 +1,147 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { SignUpButton } from "@clerk/nextjs";
+import { ArrowRightIcon, CheckIcon } from "lucide-react";
+import Link from "next/link";
+import { ClerkIcon } from "./_icons/Clerk";
+import { NeonIcon } from "./_icons/Neon";
+import { subscriptionTiersInOrder } from "@/data/subscriptionTiers";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { formatCompactNumber } from "@/lib/formatter";
+import { cn } from "@/lib/utils";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <section className="flex min-h-screen flex-col items-center justify-center gap-8 text-balance bg-[radial-gradient(hsl(0,72%,65%,40%),hsl(24,62%,73%,40%),hsl(var(--background))_60%)] px-4 text-center">
+        <h1 className="m-4 text-6xl font-bold tracking-tight lg:text-7xl xl:text-8xl">
+          Price Smarter, Sell bigger!
+        </h1>
+        <p className="max-w-screen-xl text-lg lg:text-3xl">
+          Optimize your product pricing across countries to maximize sales.
+          Capture 85% of the untapped market with location-based dynamic pricing
+        </p>
+        <SignUpButton>
+          <Button className="flex gap-2 rounded-xl p-6 text-lg">
+            Get started for free <ArrowRightIcon className="size-5" />
+          </Button>
+        </SignUpButton>
+      </section>
+      <section className="bg-primary text-primary-foreground">
+        <div className="container flex flex-col gap-16 px-8 py-16 md:px-16">
+          <h2 className="text-balance text-center text-3xl font-semibold">
+            Trusted by the top modern companies
+          </h2>
+          <div className="grid grid-cols-2 gap-16 md:grid-cols-3 xl:grid-cols-5">
+            <Link href="https://neon.tech">
+              <NeonIcon />
+            </Link>
+            <Link href="https://clerk.com">
+              <ClerkIcon />
+            </Link>
+            <Link href="https://neon.tech">
+              <NeonIcon />
+            </Link>
+            <Link href="https://clerk.com">
+              <ClerkIcon />
+            </Link>
+            <Link href="https://neon.tech">
+              <NeonIcon />
+            </Link>
+            <Link href="https://clerk.com">
+              <ClerkIcon />
+            </Link>
+            <Link href="https://neon.tech">
+              <NeonIcon />
+            </Link>
+            <Link href="https://clerk.com">
+              <ClerkIcon />
+            </Link>
+            <Link href="https://neon.tech">
+              <NeonIcon />
+            </Link>
+            <Link href="https://clerk.com" className="md:max-xl:hidden">
+              <ClerkIcon />
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+      <section id="pricing" className="bg-accent/5 px-8 py-16">
+        <h2 className="mb-8 text-balance text-center text-4xl font-semibold">
+          Pricing software which pays for itself 20x over
+        </h2>
+        <div className="grid-cols2 mx-auto grid max-w-screen-xl gap-4 lg:grid-cols-4">
+          {subscriptionTiersInOrder.map((tier) => (
+            <PricingCard key={tier.name} {...tier} />
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+function PricingCard({
+  name,
+  priceInCents,
+  maxNumberOfProducts,
+  maxNumberOfVisits,
+  canAccessAnalytics,
+  canCustomizeBanner,
+  canRemoveBranding,
+}: (typeof subscriptionTiersInOrder)[number]) {
+  const isMostPopular = name === "Standard";
+  return (
+    <Card>
+      <CardHeader>
+        <div className="mb-8 font-semibold text-accent">{name}</div>
+        <CardTitle className="text-xl font-bold">
+          ${priceInCents / 100} /mo
+        </CardTitle>
+        <CardDescription>
+          {formatCompactNumber(maxNumberOfVisits)} pricing page visits/mo
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <SignUpButton>
+          <Button
+            variant={isMostPopular ? "accent" : "default"}
+            className="w-full rounded-lg text-lg"
+          >
+            Get Started
+          </Button>
+        </SignUpButton>
+      </CardContent>
+      <CardFooter className="flex flex-col items-start gap-4">
+        <Feature className="font-bold">
+          {maxNumberOfProducts}{" "}
+          {maxNumberOfProducts === 1 ? "product" : "products"}
+        </Feature>
+        <Feature>PPP Discounts</Feature>
+        {canAccessAnalytics && <Feature>Advanced analytics</Feature>}
+        {canCustomizeBanner && <Feature>Banner customization</Feature>}
+        {canRemoveBranding && <Feature>Remove Easy PPP branding</Feature>}
+      </CardFooter>
+    </Card>
+  );
+}
+
+function Feature({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("flex items-center gap-2", className)}>
+      <CheckIcon className="size-4 rounded-full bg-accent/25 stroke-accent p-0.5" />
+      <span>{children}</span>
     </div>
   );
 }
